@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(rgbd_to_pointcloud)
 
 SET(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD 17)
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
@@ -42,8 +43,12 @@ target_link_libraries(
 # add_executable(rs_align Example/rs_align.cpp)
 # add_executable(mask Example/testMaskVis.cpp)
 add_executable(sem_edge Example/testSemEdge.cpp)
+add_executable(testOpticalflow Example/testOpticalflow.cpp)
+add_executable(testBezierCurve Example/testBezierCurve.cpp)
 
 # target_link_libraries(vis mylib)
 # target_link_libraries(rs_align mylib)
 # target_link_libraries(mask mylib)
 target_link_libraries(sem_edge mylib)
+target_link_libraries(testOpticalflow mylib)
+target_link_libraries(testBezierCurve mylib)

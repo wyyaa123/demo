@@ -63,11 +63,24 @@ public:
     int asso_edge_ID; //-- 与当前点关联的参考帧点的edge ID
     int asso_point_index; //-- 与当前点关联的参考帧点的point index
 
+    orderedEdgePoint(double _x, double _y){
+        x = _x;
+        y = _y;
+    }
+    
     orderedEdgePoint(double _x, double _y, float _imgGradAngle){
         x = _x;
         y = _y;
         imgGradAngle = _imgGradAngle;
         mbAssociated = false;
+    }
+
+    orderedEdgePoint operator-(const orderedEdgePoint& other) const {
+        return orderedEdgePoint(x - other.x, y - other.y, imgGradAngle - other.imgGradAngle);
+    }
+
+    double norm() const {
+        return std::sqrt(x * x + y * y);
     }
 };
 
